@@ -1,0 +1,71 @@
+/* إعدادات عامة للصفحة */
+body {
+    background-color: #474040; /* لون الخلفية أسود مطفي */
+    color: #ffffff;
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* الحاوية اللي تمسك العناصر في النص */
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px; /* عشان ما يكون عريض مرة على الكمبيوتر */
+    padding: 40px 20px;
+}
+
+/* تنسيق الصورة الشخصية */
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* يخلي الصورة دائرية */
+    border: 3px solid #ffffff;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* تنسيق الاسم */
+.name {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+/* تنسيق النبذة */
+.bio {
+    color: #bbbbbb;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* تنسيق الأزرار (الروابط) */
+.link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e; /* لون الزر */
+    color: white;
+    text-decoration: none;
+    padding: 16px;
+    margin-bottom: 15px;
+    border-radius: 30px; /* حواف ناعمة */
+    border: 1px solid #333;
+    transition: all 0.3s ease; /* نعومة الحركة */
+    font-weight: bold;
+    gap: 10px; /* مسافة بين الأيقونة والنص */
+}
+
+/* حركة عند مرور الماوس على الزر */
+.link-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.02); /* تكبير بسيط */
+}
+
+/* تنسيق الأيقونات داخل الزر */
+.link-btn i {
+    font-size: 20px;
+}
