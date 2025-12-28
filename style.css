@@ -1,0 +1,157 @@
+/* --- إعدادات الخطوط والألوان الرئيسية --- */
+:root {
+    --primary-bg: #0f0c29;   /* لون الخلفية الأساسي */
+    --secondary-bg: #1e84c0; /* لون التدرج الثاني */
+    --tertiary-bg: #24243e;  /* لون التدرج الثالث */
+    --text-color: #ffffff;   /* لون النص */
+    --button-bg: rgba(255, 255, 255, 0.1); /* لون خلفية الزر (شفاف) */
+    --button-hover-glow: rgba(255, 255, 255, 0.5); /* لون توهج الزر عند اللمس */
+}
+
+body {
+    /* خلفية متدرجة متحركة */
+    background: linear-gradient(-45deg, var(--primary-bg), var(--secondary-bg), var(--tertiary-bg), var(--primary-bg));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite; /* تشغيل حركة الخلفية */
+    
+    color: var(--text-color);
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* توسيط عمودي وأفقي */
+    min-height: 100vh;
+}
+
+/* --- الحاوية الرئيسية مع أنيميشن الدخول --- */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 450px; /* عرض مناسب أكثر */
+    padding: 40px 30px;
+    
+    /* تأثير الزجاج (اختياري - يعطي فخامة) */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* حركة ظهور ناعمة عند فتح الصفحة */
+    animation: slideUpFade 1s ease-out forwards;
+    opacity: 0; /* نبدأها مخفية عشان الأنيميشن يظهرها */
+}
+
+/* --- تنسيق الصورة الشخصية --- */
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2); /* حدود شفافة */
+    padding: 5px; /* مسافة بين الصورة والحدود */
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- تنسيق النصوص --- */
+.name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.bio {
+    color: #cccccc;
+    font-size: 16px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+/* --- تنسيق الأزرار الاحترافية --- */
+.link-btn {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; <-- ألغينا هذا عشان نخلي الأيقونة على اليمين والنص في الوسط */
+    
+    background-color: var(--button-bg);
+    color: white;
+    text-decoration: none;
+    padding: 18px 25px; /* زيادة الحشوة */
+    margin-bottom: 18px;
+    border-radius: 50px; /* حواف دائرية بالكامل */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* حدود خفيفة جداً */
+    
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* حركة ناعمة جداً */
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden; /* مهم لتأثير اللمعة */
+}
+
+/* تنسيق الأيقونة لضمان بقائها على اليمين */
+.link-btn i {
+    font-size: 24px;
+    width: 40px; /* مساحة ثابتة للأيقونة */
+    text-align: center;
+}
+
+/* تنسيق النص داخل الزر */
+.link-btn span {
+    flex-grow: 1; /* يخلي النص ياخذ باقي المساحة ويتوسط */
+    text-align: center;
+    margin-right: -40px; /* تعديل بسيط عشان التوسيط يكون دقيق بسبب مساحة الأيقونة */
+}
+
+/* --- تأثيرات عند مرور الماوس (Hover) --- */
+.link-btn:hover {
+    background-color: white;
+    color: var(--primary-bg); /* لون النص يصير نفس لون الخلفية الغامق */
+    transform: translateY(-5px) scale(1.03); /* يرتفع فوق ويكبر شوي */
+    box-shadow: 0 10px 20px -10px var(--button-hover-glow); /* ظل متوهج */
+    border-color: transparent;
+}
+
+/* إضافة لمعة سريعة عند المرور */
+.link-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.link-btn:hover::after {
+    left: 100%; /* تحريك اللمعة من اليسار لليمين */
+    opacity: 1;
+    transition: 0.7s;
+}
+
+
+/* --- تعريف الحركات (Animations) --- */
+
+/* حركة الخلفية */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* حركة دخول المحتوى */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* يبدأ نازل تحت */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* يطلع لمكانه الأصلي */
+    }
+}
